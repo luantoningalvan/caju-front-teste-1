@@ -1,5 +1,21 @@
 # Caju Front End Teste
 
+Olá, seja muito bem-vindo(a) a minha resolução do teste para front-end da Caju.
+
+## Como executar o projeto
+
+- O projeto pode ser acessado no navegador através do link: [https://caju-ten.vercel.app](https://caju-ten.vercel.app)
+- Para executar localmente:
+  - Clone o repositório
+  - Instale as dependências com `yarn install`
+  - Execute o servidor mock com `yarn db:init`
+  - Execute o projeto com `yarn dev`
+  - Se tudo ocorrer bem o projeto estará rodando em [http://localhost:3001](http://localhost:3001)
+- Para a execução dos testes, existem diferentes cenários
+  - Caso deseje executar somente os testes unitários, execute `yarn test:jest`
+  - Caso deseje executar somente os testes de integração/e2e, certifique-se que as portas 3000 e 3001 estão livres e execute `yarn test:cy`
+  - Para executar todos os testes em conjunto e gerar um coverage unificado, execute `yarn test`
+
 ## Apresentanção do problema
 
 O desafio é melhorar a organização do projeto, refatorar o código e implementar algumas regras e novas funcionalidades(logo abaixo).
