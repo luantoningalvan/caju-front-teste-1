@@ -31,7 +31,7 @@ export const Column = styled.div<{ status: RegistrationStatus }>`
   background-color: ${({ status }) =>
     registrationStatusStyles[status].background};
   border-radius: 32px;
-  height: 80vh;
+  height: calc(100vh - 200px);
   flex-shrink: 0;
   min-width: 400px;
   flex: 1;

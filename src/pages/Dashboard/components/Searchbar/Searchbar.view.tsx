@@ -12,15 +12,21 @@ const SearchBarView = () => {
   const [search, setSearch] = React.useState("");
   const [isFiltering, setIsFiltering] = React.useState(false);
 
-  const handleSearch = React.useCallback(() => {
-    const isValidCpf = validateCpf(unmaskCpf(search));
+  const handleSearch = React.useCallback(
+    (force: boolean = false) => {
+      const isValidCpf = validateCpf(unmaskCpf(search));
 
-    if ((!isValidCpf && !isFiltering) || (isValidCpf && isFiltering)) return;
+      const preventRequest =
+        (!isValidCpf && !isFiltering) || (isValidCpf && isFiltering);
 
-    fetchRegistrations(isValidCpf ? unmaskCpf(search) : undefined);
+      if (!force && preventRequest) return;
 
-    setIsFiltering(isValidCpf);
-  }, [isFiltering, fetchRegistrations, search]);
+      fetchRegistrations(isValidCpf ? unmaskCpf(search) : undefined);
+
+      setIsFiltering(isValidCpf);
+    },
+    [isFiltering, fetchRegistrations, search]
+  );
 
   React.useEffect(() => {
     handleSearch();
@@ -44,7 +50,7 @@ const SearchBarView = () => {
       <S.Actions>
         <IconButton
           aria-label="Atualizar listagem"
-          onClick={() => handleSearch()}
+          onClick={() => handleSearch(true)}
         >
           <S.RefetchingIcon refetching={refetching} />
         </IconButton>
